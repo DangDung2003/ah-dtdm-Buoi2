@@ -1,0 +1,33 @@
+import anvil.server
+
+# This is a server module. It runs on the Anvil server,
+# rather than in the user's browser.
+#
+# To allow anvil.server.call() to call functions here, we mark
+# them with @anvil.server.callable.
+# Here is an example - you can replace it with your own:
+#
+# @anvil.server.callable
+# def say_hello(name):
+#   print("Hello, " + name + "!")
+#   return 42
+#
+
+@anvil.server.callable
+def bubble_Sort_acs(arr):
+       arr = [int(x) for x in arr]  
+       n = len(arr)
+       for i in range(n):
+        for j in range(0, n-i-1):
+          if arr[j] > arr[j+1]:
+             arr[j], arr[j+1] = arr[j+1], arr[j]
+       return [str(x) for x in arr]
+@anvil.server.callable
+def bubble_Sort_desc(arr):
+       arr = [int(x) for x in arr]  # Chuyển đổi thành list số nguyên
+       n = len(arr)
+       for i in range(n):
+        for j in range(0, n-i-1):
+          if arr[j] < arr[j+1]:
+             arr[j], arr[j+1] = arr[j+1], arr[j]
+       return [str(x) for x in arr]  # Chuyển đổi lại thành list chuỗi
